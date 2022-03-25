@@ -1,2 +1,8 @@
+[DEV]
 host1
 host2
+
+[PROD]
+host3
+host4
+0.0.1.[2:4]
