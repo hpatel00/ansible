@@ -1,17 +1,13 @@
-- name: Print Frontend
-  ansible.builtin.debug:
-    msg: Frontend
+- name: Install Nginx
+  ansible.builtin.yum:
+    name: nginx
+    state: installed
 
-#- name: Install Nginx
-#  ansible.builtin.yum:
-#    name: nginx
-#    state: installed
-#
-#- name: Start Nginx
-#  ansible.builtin.systemd:
-#    name: nginx
-#    state: started
-#    enabled: yes
+- name: Start Nginx
+  ansible.builtin.systemd:
+    name: nginx
+    state: started
+    enabled: yes
 
 #Let's download the HTDOCS content and deploy under the Nginx path.
 #
