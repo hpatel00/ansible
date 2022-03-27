@@ -20,8 +20,8 @@
   ansible.builtin.copy:
     dest: /home/roboshop/{{COMPONENT}}/
     src: /tmp/{{COMPONENT}}-main/
-    #remote_src: yes
+    remote_src: yes
 
-- name: debug
+name: does this work
   ansible.builtin.debug:
     msg: this works
