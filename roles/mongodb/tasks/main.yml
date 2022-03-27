@@ -27,7 +27,7 @@
 
 - name: Load MongoDB Schema
   community.mongodb.mongodb_shell:
-    file: /tmp/mongodb-main/{{item}}.js #what happens if don't use double quotes?
+    file: "/tmp/mongodb-main/{{item}}.js" #what happens if don't use double quotes?
     idempotent: yes
   loop: #items in loops automatically are called 'items' as used in the variable in files above
       - catalogue
