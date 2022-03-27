@@ -10,7 +10,7 @@
 
 - name: Download and Extract NodeJS content
   become_user: roboshop
-  ansible.builtin.include_roles:
+  ansible.builtin.include_role:
     name: common
     tasks_from: download
 
@@ -20,6 +20,6 @@
     path: /home/roboshop/{{COMPONENT}}
 
 - name: Setup SystemD
-  ansible.builtin.include_roles:
+  ansible.builtin.include_role:
     name: common
     tasks_from: systemd
