@@ -1,1 +1,4 @@
-localhost
+[FRONTEND]
+
+[MONGODB]
+mongodb.roboshop.internal

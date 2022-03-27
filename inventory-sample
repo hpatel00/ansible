@@ -1,5 +1,5 @@
 [DEV]
-host1
+host1 URL=hosts.example.com
 host2
 
 [PROD]

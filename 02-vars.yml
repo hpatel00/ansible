@@ -1,0 +1,68 @@
+- name: Play Level Variables
+  hosts: all
+  vars:
+    URL: play.example.com
+  tasks:
+    - name: Print URL
+      ansible.builtin.debug:
+        msg: URL = {{URL}}
+
+# if we declare a variable on play level, then all the tasks can access that variable
+
+- name: Play Level Variables from a File
+  hosts: all
+  vars_files:
+    - sample-vars.yml
+  tasks:
+    - name: Print URL
+      ansible.builtin.debug:
+        msg: URL = {{URL}}
+
+- name: Task Level Variables
+  hosts: all
+  tasks:
+    - name: Print URL
+      ansible.builtin.debug:
+        msg: URL = {{URL}}
+      vars:
+        URL: hosts.example.com
+
+# If we declare a variable on tasks level, only that task can access that variable
+
+- name: Inventory Variable
+  hosts: all
+  tasks:
+    - name: Print URL
+      ansible.builtin.debug:
+        msg: URL = {{URL}}
+
+# variable not defined here but since mentioned in inventory, the variable shows up when file is called
+
+# can also define variables in command line
+
+# variable precedence: command > task > variable from files > play level > inventory variables
+
+- name: Fact Variable
+  hosts: all
+  tasks:
+    - name: Print Hostname
+      ansible.builtin.debug:
+        msg: Architecture = {{ansible_architecture}}, IP address = {{ansible_eth0.ipv4.address}}
+
+# ansible ssh variables
+
+# ansible run time variables below
+- name: Register variable
+  hosts: all
+  tasks:
+    - name: Run a shell command
+      ansible.builtin.shell: uptime
+      register: OUT
+
+    - name: set a fact
+      - ansible.builtin.set_fact:
+          OUTPUT: "{{OUT.stout}}" #is a play level variable
+
+    - name: Print output of shell command
+      ansible.builtin.debug:
+        msg: "{{OUT}}"
