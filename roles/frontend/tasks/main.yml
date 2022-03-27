@@ -6,7 +6,7 @@
 - name: Download Frontend Content
   ansible.builtin.include_role:
     name: common
-    include_role: download
+    tasks_from: download
 
 - name: Cleanup Old Nginx Content
   ansible.builtin.file:
