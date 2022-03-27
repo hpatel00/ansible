@@ -1,34 +1,34 @@
-#- name: Copy MongoDB File
-#  ansible.builtin.copy:
-#    src: mongodb.repo
-#    dest: /etc/yum.repos.d/mongodb.repo
-#
-#- name: Install MongoDB
-#  ansible.builtin.yum:
-#    name: mongodb-org
-#    state: present
-#
-#- name: Update MongoDB Configuration - Listening Address
-#  ansible.builtin.replace:
-#    path: /etc/mongod.conf
-#    regexp: '127.0.0.1'
-#    replace: '0.0.0.0'
-#
-#- name: Start MongoDB
-#  ansible.builtin.systemd:
-#    name: mongod
-#    state: started
-#    enabled: yes
+- name: Copy MongoDB File
+  ansible.builtin.copy:
+    src: mongodb.repo
+    dest: /etc/yum.repos.d/mongodb.repo
+
+- name: Install MongoDB
+  ansible.builtin.yum:
+    name: mongodb-org
+    state: present
+
+- name: Update MongoDB Configuration - Listening Address
+  ansible.builtin.replace:
+    path: /etc/mongod.conf
+    regexp: '127.0.0.1'
+    replace: '0.0.0.0'
+
+- name: Start MongoDB
+  ansible.builtin.systemd:
+    name: mongod
+    state: started
+    enabled: yes
 
 - name: Download and Extract MongoDB Schema
   ansible.builtin.include_role:
     name: common
     tasks_from: download
 
-#- name: Load MongoDB Schema
-#  community.mongodb.mongodb_shell:
-#    file: "/tmp/mongodb-main/{{item}}.js" #what happens if don't use double quotes?
-#    idempotent: yes
-#  loop: #items in loops automatically are called 'items' as used in the variable in files above
-#      - catalogue
-#      - users
+- name: Load MongoDB Schema
+  community.mongodb.mongodb_shell:
+    file: "/tmp/mongodb-main/{{item}}.js" #what happens if don't use double quotes?
+    idempotent: yes
+  loop: #items in loops automatically are called 'items' as used in the variable in files above
+      - catalogue
+      - users
