@@ -21,3 +21,7 @@
     dest: /home/roboshop/{{COMPONENT}}/
     src: /tmp/{{COMPONENT}}-main/
     #remote_src: yes
+
+- name: debug
+  ansible.builtin.debug:
+    msg: this works
