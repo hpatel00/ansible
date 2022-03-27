@@ -13,7 +13,7 @@
     path: /usr/share/nginx/html
     state: absent
 
-- name: Copy Frontend Content to Nginx path
+- name: Copy Frontend Content to Nginx Path
   ansible.builtin.copy:
     src: /tmp/frontend-main/static/
     dest: /usr/share/nginx/html
