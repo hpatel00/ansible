@@ -12,7 +12,6 @@
     tasks_from: download
 
 - name: Install Python Dependencies
-  become_user: roboshop
   ansible.builtin.pip:
     requirements: /home/roboshop/{{COMPONENT}}/requirements.txt
     executable: pip3
