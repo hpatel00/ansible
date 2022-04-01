@@ -1,0 +1,9 @@
+- name: Demo on Vault
+  hosts: localhost
+  vars:
+    PASS: |vault |
+#                    place string from encrypt_string command from command line here
+  tasks:
+    - name: Print
+      debug:
+        msg: PASSWORD = {{PASS}}
