@@ -1,0 +1,9 @@
+- name: Ansible Filters
+  hosts: localhost
+  tasks:
+    - name: Converse Case of String
+      ansible.builtin.debug:
+        msg: "{{abc | upper}}"
+    - name: URL
+      debug:
+        msg: HOST = {{ "http://user:password@www.acme.com:9000/dir/index.html?query=term#fragment" | urlsplit('hostname') }}
