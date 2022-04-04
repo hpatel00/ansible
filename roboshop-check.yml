@@ -48,10 +48,6 @@
       set_fact:
         INSTANCE_ID: "{{hostvars['localhost']['INSTANCE_ID']}}"
 
-    - name: Debug
-      ansible.builtin.debug:
-        msg: Test
-
 - name: Terminate instances
   hosts: localhost
   tasks:
