@@ -1,6 +1,11 @@
 pipeline{
  agent any
 
+  environment {
+    SSH_USR=
+    SSH_PSW=
+  }
+
   options {
     ansiColor('xterm')
   }
