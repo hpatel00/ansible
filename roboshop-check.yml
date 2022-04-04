@@ -53,6 +53,7 @@
             name: "{{role_name}}"
       always:
         - name: Terminate the Instances that were previously Launched
+          delegate_to: 127.0.0.1
           amazon.aws.ec2:
             state: 'absent'
             region: us-east-1
