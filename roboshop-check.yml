@@ -32,7 +32,7 @@
         timeout: 120
       loop: "{{ ec2.instances }}"
 
-    - name: Make vars persistant
+    - name: Set an Instance_ID Variable
       set_fact:
         INSTANCE_ID: "{{ ec2.instance_ids }}"
 
@@ -56,4 +56,4 @@
           amazon.aws.ec2:
             state: 'absent'
             region: us-east-1
-            instance_ids: '{{ ec2.instance_ids }}'
+            instance_ids: '{{ INSTANCE_IDS }}'
