@@ -41,8 +41,8 @@
   become: True
   gather_facts: True
   ignore_errors: True
-#  roles:
-#    - "{{role_name}}"
+  roles:
+    - "{{role_name}}"
   tasks:
     - name: set the facts per host
         set_fact:
