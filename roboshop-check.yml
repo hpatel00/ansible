@@ -45,8 +45,8 @@
     - "{{role_name}}"
   tasks:
     - name: set the facts per host
-        set_fact:
-          INSTANCE_ID: "{{hostvars['localhost']['INSTANCE_ID']}}"
+      set_fact:
+        INSTANCE_ID: "{{hostvars['localhost']['INSTANCE_ID']}}"
 
     - name: Debug
       ansible.builtin.debug:
