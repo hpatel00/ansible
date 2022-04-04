@@ -16,7 +16,7 @@ pipeline{
       steps {
         sh '''
            export ANSIBLE_ALLOW_WORLD_READABLE_TMPFILES=True
-           ansible-playbook roboshop.yml -e HOST=localhost -e role_name=frontend -C
+           ansible-playbook roboshop-check.yml -e HOST=localhost -e ansible_user=centos -e ansible_password=DevOps321 -e role_name=frontend -e ENV=sandbox
         '''
       }
 
