@@ -41,18 +41,19 @@
   become: True
   gather_facts: True
   ignore_errors: True
-  roles:
-    - "{{role_name}}"
   tasks:
     - name: set the facts per host
       set_fact:
         INSTANCE_ID: "{{hostvars['localhost']['INSTANCE_ID']}}"
 
-- name: Terminate instances
-  hosts: localhost
-  tasks:
-    - name: Terminate instances that were previously launched
-      amazon.aws.ec2:
-        state: 'absent'
-        region: us-east-1
-        instance_ids: '{{ ec2.instance_ids }}'
+    - name: Import the Role and Terminate the Instance
+      block:
+        - name: Import a role
+          ansible.builtin.import_role:
+            name: "{{role_name}}"
+      always:
+        - name: Terminate the Instances that were previously Launched
+          amazon.aws.ec2:
+            state: 'absent'
+            region: us-east-1
+            instance_ids: '{{ ec2.instance_ids }}'
