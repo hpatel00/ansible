@@ -11,8 +11,28 @@ pipeline{
 
   stages {
 
+     stage('Only Branch') {
+       when { branch pattern: "ROB-.*", comparator: "REGEXP"}
+        steps{
+            sh 'env'
+            sh 'echo Only Branch'
+        }
+     }
 
-    }
+    stage('PR ') {
+      when { branch pattern: "PR-.*", comparator: "REGEXP"}
+        steps{
+            sh 'env'
+            sh 'echo PR'
+        }
+     }
+
+    stage('Main Branch') {
+        steps{
+            sh 'env'
+            sh 'echo Main Branch'
+        }
+     }
   }
 }
 
