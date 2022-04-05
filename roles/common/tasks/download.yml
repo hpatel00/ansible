@@ -12,12 +12,12 @@
 
 - name: Cleanup Old Content
   ansible.builtin.file:
-    path: /home/roboshop/{{COMPONENT}}
+    path: "{{APP_LOCATION}}"
     state: absent
 
 - name: Copy App Content
-  become_user: roboshop
+  become_user: "{{APP_USER}}"
   ansible.builtin.copy:
-    dest: /home/roboshop/{{COMPONENT}}/
+    dest: "{{APP_LOCATION}}"
     src: /tmp/{{COMPONENT}}-main/
     remote_src: yes
