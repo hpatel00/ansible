@@ -36,7 +36,9 @@ pipeline{
     }
 
     stage('Test') {
-        when { env.tag_name != null }
+        when {
+          expression { env.TAG_NAME != null }
+        }
             steps {
                 sh '''
                     env
