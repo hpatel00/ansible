@@ -37,6 +37,7 @@ pipeline{
 }
 
 
+
 // // We're hardcoding frontend here, but if you want to parse the previous commit for what files have been changed use the command below:
 // // git diff HEAD@{1} --name-only | grep roles | awk -F / '{print $2}'
 //     stage('Do a Dry Run') {
