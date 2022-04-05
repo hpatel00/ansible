@@ -26,12 +26,22 @@ pipeline{
 //         }
 //      }
 
+    stage('Main') {
+        when { branch 'main' }
+            steps {
+                sh '''
+                    env
+                '''
+            }
+    }
+
     stage('Test') {
-        steps {
-            sh '''
-                env
-            '''
-        }
+        when { env.tag_name != null }
+            steps {
+                sh '''
+                    env
+                '''
+            }
     }
   }
 }
