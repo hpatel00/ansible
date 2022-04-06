@@ -7,4 +7,5 @@ C2=$(cat /tmp/sort1 | awk -F . '{ print $2 }' | sort -n | uniq | tail -1)
 cat /tmp/sort1 | grep "^${C1}\.${C2}.*" >/tmp/sort2
 
 C3=$(cat /tmp/sort2 | awk -F . '{ print $3 }' | sort -n | uniq | tail -1)
-cat /tmp/sort2 | grep "^${C1}\.${C2}\.${C3}"
+C3=$((C3+1))
+echo "${C1}.${C2}.${C3}"
