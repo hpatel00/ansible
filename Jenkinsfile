@@ -26,7 +26,7 @@ pipeline{
         }
      }
 
-    stage('Promote Code to PROD Branch') {
+    stage('tag') {
       when { branch 'main'}
         steps{
             sh 'env'
