@@ -31,7 +31,7 @@ pipeline{
         steps {
             sh '''
                env
-               bash sort_git_tags.sh
+               bash -x sort_git_tags.sh
             '''
         }
     }
