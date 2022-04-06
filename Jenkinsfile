@@ -30,10 +30,11 @@ pipeline{
       when { branch 'main' }
       steps {
         dir('CODE') {
-           git branch: 'main', url: 'https://github.com/hpatel00/ansible.git'
+           git branch: 'main', credentialsId: 'GitHubToken', url: 'https://github.com/hpatel00/ansible.git'
         sh '''
-           env
-           bash -x sort_git_tags.sh
+           TAG=$(bash sort_git_tags.sh)
+           git tag $TAG
+           git push --tags
         '''
         }
       }
