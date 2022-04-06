@@ -26,14 +26,13 @@ pipeline{
         }
      }
 
-    stage('Test') {
-      when {
-        expression { env.TAG_NAME != null }
-      }
+    stage('Tag') {
+      when { branch 'main' }
         steps {
             sh '''
                env
-               '''
+               bash sort_git_tags.sh
+            '''
         }
     }
   }
