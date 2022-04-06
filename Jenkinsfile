@@ -31,7 +31,7 @@ pipeline{
       when { branch 'main' }
       steps {
         dir('CODE') {
-           git branch: 'main', "https://${GIT_USR}:${GIT_PSW}@github.com/hpatel00/ansible.git"
+           git branch: 'main', url: "https://${GIT_USR}:${GIT_PSW}@github.com/hpatel00/ansible.git"
            sh '''
              TAG=$(bash sort_git_tags.sh)
              git tag $TAG
