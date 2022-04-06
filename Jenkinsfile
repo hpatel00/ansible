@@ -34,6 +34,9 @@ pipeline{
         sh '''
            env
            bash -x sort_git_tags.sh
+           git tag -l
+           ls -l
+           pwd
         '''
         }
       }
