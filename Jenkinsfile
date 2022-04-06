@@ -26,17 +26,17 @@ pipeline{
         }
      }
 
-    stage('Tag') {
+    stage('TAG') {
       when { branch 'main' }
-        steps {
-            dir('CODE') {
-               git branch: 'main', url: 'https://github.com/hpatel00/ansible.git'
-            }
-            sh '''
-               env
-               bash -x sort_git_tags.sh
-            '''
+      steps {
+        dir('CODE') {
+           git branch: 'main', url: 'https://github.com/hpatel00/ansible.git'
+        sh '''
+           env
+           bash -x sort_git_tags.sh
+        '''
         }
+      }
     }
   }
 }
