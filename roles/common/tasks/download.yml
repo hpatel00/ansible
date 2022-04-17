@@ -25,3 +25,10 @@
 #    dest: "{{APP_LOCATION}}"
 #    src: /tmp/{{COMPONENT}}-main/
 #    remote_src: yes
+
+########## Download from Nexus
+- name: Download and Extract {{COMPONENT}}
+  ansible.builtin.unarchive:
+    src:
+    dest: /tmp
+    remote_src: yes
