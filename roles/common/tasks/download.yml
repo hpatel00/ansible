@@ -4,20 +4,24 @@
     comment: RoboShop Project Application User
   register: APP_USER_REGISTER
 
-- name: Download and Extract {{COMPONENT}}
-  ansible.builtin.unarchive:
-    src: https://github.com/roboshop-devops-project/{{COMPONENT}}/archive/main.zip
-    dest: /tmp
-    remote_src: yes
-
 - name: Cleanup Old Content
   ansible.builtin.file:
     path: "{{APP_LOCATION}}"
     state: absent
 
-- name: Copy App Content
-  become_user: "{{APP_USER}}"
-  ansible.builtin.copy:
-    dest: "{{APP_LOCATION}}"
-    src: /tmp/{{COMPONENT}}-main/
-    remote_src: yes
+########## Download from GitHub
+# In standard processes, software is downloaded from a release rather than the source code (in this case, a github rep)
+# As such, the steps to download content from github are commented out below
+
+#- name: Download and Extract {{COMPONENT}}
+#  ansible.builtin.unarchive:
+#    src: https://github.com/roboshop-devops-project/{{COMPONENT}}/archive/main.zip
+#    dest: /tmp
+#    remote_src: yes
+
+#- name: Copy App Content
+#  become_user: "{{APP_USER}}"
+#  ansible.builtin.copy:
+#    dest: "{{APP_LOCATION}}"
+#    src: /tmp/{{COMPONENT}}-main/
+#    remote_src: yes
