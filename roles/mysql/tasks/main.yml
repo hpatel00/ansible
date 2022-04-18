@@ -19,7 +19,6 @@
   ansible.builtin.pip:
     name:
       - PyMySQL
-    state: installed
     executable: pip3
 
 - name: Check the DB Password by Collecting Information
