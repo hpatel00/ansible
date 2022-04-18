@@ -10,7 +10,7 @@
     name: common
     tasks_from: download
   vars:
-    APP_LOCATION: "home/roboshop/{{COMPONENT}}"
+    APP_LOCATION: "/home/roboshop/{{COMPONENT}}"
     APP_USER: roboshop
 
 #- name: Make Maven Package
