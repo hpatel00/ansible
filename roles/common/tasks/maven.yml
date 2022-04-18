@@ -1,18 +1,23 @@
 - name: Install Maven
   ansible.builtin.yum:
-    name: maven
+    name:
+      #- maven
+      - java
     state: installed
 
 - name: Download and Extract {{COMPONENT}} Content
   ansible.builtin.include_role:
     name: common
     tasks_from: download
+  vars:
+    APP_LOCATION: "home/roboshop/{{COMPONENT}}"
+    APP_USER: roboshop
 
-- name: Make Maven Package
-  become_user: roboshop
-  ansible.builtin.shell: mvn clean package && mv target/shipping-1.0.jar shipping.jar
-  args:
-    chdir: /home/roboshop/{{COMPONENT}}
+#- name: Make Maven Package
+#  become_user: roboshop
+#  ansible.builtin.shell: mvn clean package && mv target/shipping-1.0.jar shipping.jar
+#  args:
+#    chdir: /home/roboshop/{{COMPONENT}}
 
 - name: Setup {{COMPONENT}} SystemD File
   ansible.builtin.include_role:
