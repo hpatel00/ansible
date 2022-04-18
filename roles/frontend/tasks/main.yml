@@ -7,11 +7,14 @@
   ansible.builtin.include_role:
     name: common
     tasks_from: download
+  vars:
+    APP_LOCATION: /usr/share/nginx/html
+    APP_USER: root
 
-- name: Cleanup Old Nginx Content
-  ansible.builtin.file:
-    path: /usr/share/nginx/html/
-    state: absent
+#- name: Cleanup Old Nginx Content
+#  ansible.builtin.file:
+#    path: /usr/share/nginx/html/
+#    state: absent
 
 #- name: Copy Frontend Content to Nginx Path
 #  ansible.builtin.copy:
